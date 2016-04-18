@@ -1,6 +1,10 @@
 class LinksController < ApplicationController
   def index
-    @links = Link.all
+    params[:per_page] = (params[:per_page] || 10).to_i
+    params[:page] = (params[:page] || 1).to_i
+    offset = params[:per_page] * params[:page] - params[:per_page]
+
+    @links = Link.offset(offset).limit(params[:per_page])
   end
 
   def new

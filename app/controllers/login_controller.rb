@@ -5,7 +5,7 @@ class LoginController < ApplicationController
 
   def create
     @user = User.find_by(user_name: user_params[:user_name])
-    if @user && @user.password == user_params[:password]
+    if @user && @user.authenticate(user_params[:password])
       session[:user_id] = @user.id
       redirect_to links_path
     else

@@ -3,7 +3,8 @@
 <% @comments.each do |comment| %>
 
   <div>
-    <% comment.link_id %>
+    <%= comment.id %>
+    <%= comment.link_id %>
     <%= comment.body %>
   </div>
 

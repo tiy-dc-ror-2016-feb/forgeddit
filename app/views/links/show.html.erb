@@ -10,7 +10,7 @@
   <%= link_to "Comments", comments_path(link_id: @link.id) %>
 </div>
 
-<% if current_user %>
+<% if current_user == @link.user %>
   <%= link_to "Edit", edit_link_path %>
   <%= link_to "Delete", link_path, method: :delete %>
 <% end %>
